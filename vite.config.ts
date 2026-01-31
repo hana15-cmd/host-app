@@ -10,8 +10,9 @@ export default defineConfig({
       name: "host_app",
       remotes: {
         remote_app: "http://localhost:5001/assets/remoteEntry.js",
-      },
-      shared: ["react", "react-dom"],
+        mfe_accounting_app: "http://localhost:5002/assets/remoteEntry.js",
+       },
+      shared: ["react", "react-dom", "react-router-dom"],
     }),
   ],
   build: {

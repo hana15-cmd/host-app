@@ -1,25 +1,23 @@
-import viteLogo from "/vite.svg";
-import "./App.css";
-import "./index.css";
-import { RemoteComponentWrapper } from "./components/RemoteComponentWrapper";
+import React, { Suspense } from "react"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
-function App() {
+const DashboardApp = React.lazy(() => import("remote_app/App"))
+const AccountingApp = React.lazy(() => import("mfe_accounting_app/App"))
+
+export default function App() {
   return (
-    <>
-      <div className="px-6 border-2">
-        <div className="flex justify-center items-center">
-          <img src={viteLogo} alt="Example" />
-        </div>
-        <h1 className="text-2xl">Host Application</h1>
-        <p>
-          {" "}
-          Welcome to the Host application, below are the components pulled from
-          the remote application
-        </p>
-        <RemoteComponentWrapper />
-      </div>
-    </>
-  );
-}
+    <BrowserRouter>
+      <nav style={{ padding: 20 }}>
+        <Link to="/dashboard">Dashboard</Link> |{" "}
+        <Link to="/accounting">Accounting</Link>
+      </nav>
 
-export default App;
+      <Suspense fallback={<div>Loading MFE...</div>}>
+        <Routes>
+          <Route path="/dashboard/*" element={<DashboardApp />} />
+          <Route path="/accounting/*" element={<AccountingApp />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  )
+}
