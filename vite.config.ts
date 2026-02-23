@@ -12,6 +12,7 @@ export default defineConfig({
       remotes: {
         remote_app: "http://localhost:5001/assets/remoteEntry.js",
         mfe_accounting_app: "http://localhost:5002/assets/remoteEntry.js",
+        user_management_app: "http://localhost:5004/assets/remoteEntry.js",
        },
       shared: {
         react: {
