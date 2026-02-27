@@ -13,7 +13,7 @@ export default defineConfig({
         remote_app: "http://localhost:5001/assets/remoteEntry.js",
         mfe_accounting_app: "http://localhost:5002/assets/remoteEntry.js",
         user_management_app: "http://localhost:5003/assets/remoteEntry.js",
-       },
+      },
       shared: {
         react: {
           requiredVersion: "^19.2.0",
